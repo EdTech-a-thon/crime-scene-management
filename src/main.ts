@@ -130,7 +130,7 @@ function report() {
     <section class="results"><div class="results-title"><h2>ITEM-BY-ITEM ANALYSIS</h2><span>72-HOUR CONDITION</span></div>${evidence.map(item => {
       const choice = choices.get(item.id)!;
       const right = choice === item.correct;
-      return `<article class="result-row ${right ? "correct" : "incorrect"}"><div class="result-id"><span>${item.icon}</span><b>E-${item.number}</b></div><div><h3>${item.name}</h3><p>You chose: <strong>${packageLabels[choice]}</strong></p></div><div class="result-outcome"><span>${right ? "✓ PRESERVED" : "! COMPROMISED"}</span><p>${right ? item.success : item.failure}</p>${right ? "" : `<small>Correct choice: ${packageLabels[item.correct]}</small>`}</div></article>`;
+       return `<article class="result-row ${right ? "correct" : "incorrect"}"><div class="result-id"><span>${item.icon}</span><b>E-${item.number}</b></div><div><h3>${item.name}</h3><p>You chose: <strong>${packageLabels[choice]}</strong></p></div><div class="result-outcome"><span>${right ? "✓ PRESERVED" : "! COMPROMISED"}</span><p>${right ? item.success : item.failure}</p></div></article>`;
     }).join("")}</section>
     <div class="report-actions"><button class="secondary-button" data-action="print">PRINT REPORT</button><button class="primary-button" data-action="restart">START NEW ATTEMPT <b>↻</b></button></div>
   </main>`);
