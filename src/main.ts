@@ -108,14 +108,16 @@ function timeView() {
   const correct = evidence.filter(item => choices.get(item.id) === item.correct).length;
   shell(`<main class="time-page">
     <section class="transport-header"><div><p class="eyebrow">Evidence transport / Lab intake</p><h1>WHAT HAPPENS OVER TIME?</h1><p>The evidence is sealed. Advance the clock to observe how your packaging decisions affect each item.</p></div><div class="clock"><span>ELAPSED TIME</span><strong>${String(elapsed).padStart(2, "0")}:00</strong><small>HOURS</small></div></section>
-    <section class="timeline"><div class="timeline-track"><span style="width:${elapsed === 0 ? 0 : elapsed === 24 ? 50 : 100}%"></span></div><div class="time-node active"><b>00</b><span>SEALED</span></div><div class="time-node ${elapsed >= 24 ? "active" : ""}"><b>24</b><span>HOURS</span></div><div class="time-node ${elapsed >= 48 ? "active" : ""}"><b>48</b><span>HOURS</span></div></section>
+    <section class="timeline"><div class="timeline-track"><span style="width:${elapsed === 0 ? 0 : elapsed === 24 ? 50 : 100}%"></span></div><div class="time-node active"><b>00</b><span>SEALED</span></div><div class="time-node ${elapsed >= 24 ? "active" : ""}"><b>24</b><span>HOURS</span></div><div class="time-node ${elapsed >= 72 ? "active" : ""}"><b>72</b><span>HOURS</span></div></section>
     <section class="lab-grid">${evidence.map(item => {
       const isCorrect = choices.get(item.id) === item.correct;
       const reveal = elapsed > 0;
-      const condition = !reveal ? "SEALED" : isCorrect ? "STABLE" : item.id === "shirt" ? "MOLD GROWTH" : item.id === "knife" ? "PACKAGE FAILURE" : "AT RISK";
-      return `<article class="lab-item ${reveal ? isCorrect ? "stable" : "degraded" : "sealed"}"><div class="lab-icon"><span>${item.icon}</span>${reveal && !isCorrect ? "<i>!</i>" : ""}</div><div class="lab-info"><span>E-${item.number}</span><h3>${item.name}</h3><p>${packageLabels[choices.get(item.id)!]}</p></div><div class="condition"><small>CONDITION</small><strong>${condition}</strong></div></article>`;
+      const moldGrowth = item.id === "shirt" && !isCorrect && elapsed >= 72;
+      const degraded = reveal && !isCorrect;
+      const condition = !reveal ? "SEALED" : isCorrect ? "STABLE" : moldGrowth ? "MOLD GROWTH" : item.id === "shirt" ? "MOISTURE TRAPPED" : item.id === "knife" ? "PACKAGE FAILURE" : "AT RISK";
+      return `<article class="lab-item ${degraded ? "degraded" : reveal ? "stable" : "sealed"}"><div class="lab-icon"><span>${item.icon}</span>${degraded ? "<i>!</i>" : ""}</div><div class="lab-info"><span>E-${item.number}</span><h3>${item.name}</h3><p>${packageLabels[choices.get(item.id)!]}</p></div><div class="condition"><small>CONDITION</small><strong>${condition}</strong></div></article>`;
     }).join("")}</section>
-    <div class="time-actions">${elapsed < 48 ? `<button class="primary-button" data-action="advance">ADVANCE TO ${elapsed === 0 ? 24 : 48} HOURS <b>→</b></button>` : `<button class="primary-button" data-action="report">OPEN LAB REPORT <b>→</b></button>`}${elapsed ? `<p><strong>${correct} stable</strong> · ${evidence.length - correct} compromised</p>` : ""}</div>
+    <div class="time-actions">${elapsed < 72 ? `<button class="primary-button" data-action="advance">ADVANCE TO ${elapsed === 0 ? 24 : 72} HOURS <b>→</b></button>` : `<button class="primary-button" data-action="report">OPEN LAB REPORT <b>→</b></button>`}${elapsed ? `<p><strong>${correct} stable</strong> · ${evidence.length - correct} compromised</p>` : ""}</div>
   </main>`);
 }
 
@@ -123,9 +125,9 @@ function report() {
   const correct = evidence.filter(item => choices.get(item.id) === item.correct).length;
   const percent = Math.round((correct / evidence.length) * 100);
   const rank = percent === 100 ? "EXEMPLARY" : percent >= 75 ? "PROFICIENT" : percent >= 50 ? "DEVELOPING" : "REVIEW REQUIRED";
-  shell(`<main class="report-page"><section class="report-heading"><div><p class="eyebrow">Final laboratory analysis</p><h1>EVIDENCE INTEGRITY REPORT</h1><p>Case 24-071 · Riverside Apartment · Submitted 48 hours after collection</p></div><div class="score-seal"><span>INTEGRITY SCORE</span><strong>${correct}<small>/8</small></strong><b>${rank}</b></div></section>
-    <section class="report-summary"><div><span>${percent}%</span><p><strong>Evidence preserved</strong>Your packaging choices kept ${correct} of 8 items suitable for laboratory analysis.</p></div><div><span>${evidence.length - correct}</span><p><strong>Items compromised</strong>Review each item below to see what happened and why.</p></div><div class="case-code"><small>WORKSHEET CODE</small><strong>RIV-${correct}${8 - correct}-48</strong></div></section>
-    <section class="results"><div class="results-title"><h2>ITEM-BY-ITEM ANALYSIS</h2><span>48-HOUR CONDITION</span></div>${evidence.map(item => {
+  shell(`<main class="report-page"><section class="report-heading"><div><p class="eyebrow">Final laboratory analysis</p><h1>EVIDENCE INTEGRITY REPORT</h1><p>Case 24-071 · Riverside Apartment · Submitted 72 hours after collection</p></div><div class="score-seal"><span>INTEGRITY SCORE</span><strong>${correct}<small>/8</small></strong><b>${rank}</b></div></section>
+    <section class="report-summary"><div><span>${percent}%</span><p><strong>Evidence preserved</strong>Your packaging choices kept ${correct} of 8 items suitable for laboratory analysis.</p></div><div><span>${evidence.length - correct}</span><p><strong>Items compromised</strong>Review each item below to see what happened and why.</p></div><div class="case-code"><small>WORKSHEET CODE</small><strong>RIV-${correct}${8 - correct}-72</strong></div></section>
+    <section class="results"><div class="results-title"><h2>ITEM-BY-ITEM ANALYSIS</h2><span>72-HOUR CONDITION</span></div>${evidence.map(item => {
       const choice = choices.get(item.id)!;
       const right = choice === item.correct;
       return `<article class="result-row ${right ? "correct" : "incorrect"}"><div class="result-id"><span>${item.icon}</span><b>E-${item.number}</b></div><div><h3>${item.name}</h3><p>You chose: <strong>${packageLabels[choice]}</strong></p></div><div class="result-outcome"><span>${right ? "✓ PRESERVED" : "! COMPROMISED"}</span><p>${right ? item.success : item.failure}</p>${right ? "" : `<small>Correct choice: ${packageLabels[item.correct]}</small>`}</div></article>`;
@@ -156,7 +158,7 @@ function bindEvents() {
     if (action === "close") { selected = null; scene(); }
     if (action === "package" && selected && pendingChoice) { choices.set(selected.id, pendingChoice); selected = null; pendingChoice = null; scene(); }
     if (action === "seal") { elapsed = 0; timeView(); }
-    if (action === "advance") { elapsed += 24; timeView(); }
+    if (action === "advance") { elapsed = elapsed === 0 ? 24 : 72; timeView(); }
     if (action === "report") report();
     if (action === "print") window.print();
     if (action === "restart") { choices = new Map(); elapsed = 0; selected = null; briefing(); }
