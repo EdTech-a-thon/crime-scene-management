@@ -3,6 +3,9 @@ out
 dist
 .svelte-kit/
 *.local
+.pocketbase/
+pb_data/
+pocketbase.log
 
 # dotenv environment variable files
 .env

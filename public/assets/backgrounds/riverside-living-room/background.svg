@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Riverside living room</title>
+  <desc id="desc">A stylized living room used as a lesson background.</desc>
+  <defs><linearGradient id="wall" x2="0" y2="1"><stop stop-color="#718277"/><stop offset="1" stop-color="#53645a"/></linearGradient><pattern id="floor" width="130" height="130" patternUnits="userSpaceOnUse" patternTransform="skewX(-12)"><rect width="130" height="130" fill="#80785e"/><path d="M0 0v130" stroke="#524f40" stroke-width="4" opacity=".35"/></pattern></defs>
+  <rect width="1600" height="430" fill="url(#wall)"/><rect y="430" width="1600" height="470" fill="url(#floor)"/>
+  <rect x="90" y="75" width="350" height="255" rx="5" fill="#293a32"/><g fill="#a8b9ad"><rect x="110" y="95" width="145" height="95"/><rect x="275" y="95" width="145" height="95"/><rect x="110" y="210" width="145" height="100"/><rect x="275" y="210" width="145" height="100"/></g>
+  <rect x="1240" y="70" width="290" height="430" fill="#35473d" stroke="#243229" stroke-width="22"/><circle cx="1285" cy="285" r="13" fill="#d3d99a"/>
+  <path d="M335 710l700-90 230 235-850 30z" fill="#526351" stroke="#354337" stroke-width="22"/>
+  <g stroke="#4c4b40" stroke-width="18"><path d="M890 270h480q45 0 45 45v205H845V315q0-45 45-45z" fill="#bcb49b"/><path d="M875 360h520"/><path d="M1030 285v220M1210 285v220"/></g>
+  <path d="M1050 590h350q35 0 35 35v160h-420V625q0-35 35-35z" fill="#5d6d59" stroke="#344136" stroke-width="18"/>
+  <g><path d="M590 570h400l-45 155H545z" fill="#765e43" stroke="#3d342a" stroke-width="18"/><path d="M585 720l-25 120M945 720l35 120" stroke="#3d342a" stroke-width="20"/></g>
+  <rect y="415" width="1600" height="25" fill="#334138"/><rect width="1600" height="900" fill="none" stroke="#202c25" stroke-width="30"/>
+</svg>
