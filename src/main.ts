@@ -69,21 +69,21 @@ function authPage(mode: "signin" | "register", error = ""): void {
   app.innerHTML = `
     <main class="auth-page">
       <section class="auth-intro">
-        <a class="wordmark light" href="/" data-link><span>LR</span><strong>Lesson Room</strong></a>
-        <div><p class="kicker">A place for lessons to unfold</p><h1>Build once.<br>Share with the room.</h1><p>Keep interactive lessons together and give every student one clear link to begin.</p></div>
-        <blockquote>“The best classroom technology gets out of the way of learning.”</blockquote>
+        <a class="wordmark light" href="/" data-link><span>ER</span><strong>EVIDENCE ROOM<small>FORENSIC TRAINING UNIT</small></strong></a>
+        <div><p class="kicker">Instructor command desk</p><h1>PREPARE THE<br>CASE FILE.</h1><p>Manage your forensic training scenarios, review their status, and send investigators straight to the scene.</p></div>
+        <blockquote>Every well-run investigation begins with a clear chain of custody.</blockquote>
       </section>
       <section class="auth-panel">
         <form class="auth-form" id="auth-form">
-          <p class="step">Teacher access</p>
+          <p class="step">Instructor access / secured</p>
           <h2>${registering ? "Create your account" : "Welcome back"}</h2>
-          <p>${registering ? "Use your school email to create a teacher account." : "Sign in to see the lessons assigned to your account."}</p>
+          <p>${registering ? "Use your school email to create an instructor account." : "Sign in to review the case files assigned to your account."}</p>
           ${error ? `<div class="form-error" role="alert">${escapeHtml(error)}</div>` : ""}
           <label>Email address<input required name="email" type="email" autocomplete="email" placeholder="teacher@school.org"></label>
           <label>Password<input required minlength="8" name="password" type="password" autocomplete="${registering ? "new-password" : "current-password"}" placeholder="At least 8 characters"></label>
           ${registering ? `<label>Confirm password<input required minlength="8" name="passwordConfirm" type="password" autocomplete="new-password" placeholder="Repeat your password"></label>` : ""}
-          <button class="button primary" type="submit">${registering ? "Create teacher account" : "Sign in"}<span>→</span></button>
-          <p class="switch">${registering ? "Already have an account?" : "New to Lesson Room?"} <a href="/${registering ? "signin" : "register"}" data-link>${registering ? "Sign in" : "Create an account"}</a></p>
+          <button class="button primary" type="submit">${registering ? "Create instructor account" : "Access case files"}<span>→</span></button>
+          <p class="switch">${registering ? "Already have an account?" : "New instructor?"} <a href="/${registering ? "signin" : "register"}" data-link>${registering ? "Sign in" : "Create an account"}</a></p>
         </form>
       </section>
     </main>`;
@@ -124,11 +124,11 @@ async function dashboard(): Promise<void> {
     const email = pb.authStore.record?.email ?? "Teacher";
     app.innerHTML = `
       <header class="teacher-header">
-        <a class="wordmark" href="/dashboard" data-link><span>LR</span><strong>Lesson Room</strong></a>
+        <a class="wordmark" href="/dashboard" data-link><span>ER</span><strong>EVIDENCE ROOM<small>FORENSIC TRAINING UNIT</small></strong></a>
         <div class="account"><span>${escapeHtml(email)}</span><button class="text-button" data-action="logout">Sign out</button></div>
       </header>
       <main class="dashboard">
-        <section class="dashboard-heading"><div><p class="kicker">Teacher library</p><h1>Your lessons</h1><p>Open a lesson to preview it, or copy its student link when it is published.</p></div><div class="lesson-count"><strong>${lessons.length}</strong><span>${lessons.length === 1 ? "lesson" : "lessons"}</span></div></section>
+        <section class="dashboard-heading"><div><p class="kicker">Instructor command desk</p><h1>CASE FILES</h1><p>Review a scenario, inspect the student view, or send a secure briefing link to your investigators.</p></div><div class="lesson-count"><strong>${lessons.length}</strong><span>${lessons.length === 1 ? "case file" : "case files"}</span></div></section>
         ${lessons.length ? `<section class="lesson-grid">${lessons.map(lessonCard).join("")}</section>` : emptyLibrary()}
         <aside class="admin-note"><span>Managing lesson data</span><p>Lesson configuration is intentionally kept out of this prototype. A PocketBase administrator can add lessons and assign them to your account from <a href="/_/" target="_blank" rel="noreferrer">the data dashboard</a>.</p></aside>
       </main>`;
@@ -141,14 +141,14 @@ function lessonCard(lesson: Lesson): string {
   const status = lesson.published ? "Published" : "Draft";
   return `<article class="lesson-card">
     <div class="card-top"><span class="status ${lesson.published ? "live" : ""}">${status}</span><time>Updated ${formatDate(lesson.updated)}</time></div>
-    <div><p class="lesson-number">Lesson ${escapeHtml(lesson.id.slice(-4).toUpperCase())}</p><h2>${escapeHtml(lesson.name)}</h2><p>${escapeHtml(lesson.description || "No description has been added yet.")}</p></div>
+    <div><p class="lesson-number">Case ${escapeHtml(lesson.id.slice(-4).toUpperCase())}</p><h2>${escapeHtml(lesson.name)}</h2><p>${escapeHtml(lesson.description || "No case summary has been added yet.")}</p></div>
     <div class="card-meta"><span>${lesson.objects.length} ${lesson.objects.length === 1 ? "object" : "objects"}</span><span>${escapeHtml(lesson.backgroundId.replaceAll("-", " "))}</span></div>
-    <div class="card-actions"><a class="button secondary" href="/preview/${encodeURIComponent(lesson.id)}" data-link>Preview</a>${lesson.published ? `<button class="button primary copy-link" data-token="${escapeHtml(lesson.shareToken)}">Copy student link</button>` : `<button class="button primary" disabled>Publish to share</button>`}</div>
+    <div class="card-actions"><a class="button secondary" href="/preview/${encodeURIComponent(lesson.id)}" data-link>Inspect</a>${lesson.published ? `<button class="button primary copy-link" data-token="${escapeHtml(lesson.shareToken)}">Copy briefing link</button>` : `<button class="button primary" disabled>Publish to brief</button>`}</div>
   </article>`;
 }
 
 function emptyLibrary(): string {
-  return `<section class="empty-library"><span>01</span><h2>No lessons assigned yet</h2><p>Ask a PocketBase administrator to create a lesson and choose your teacher account in its <strong>teacher</strong> field.</p><a class="button secondary" href="/_/" target="_blank" rel="noreferrer">Open data dashboard</a></section>`;
+  return `<section class="empty-library"><span>01</span><h2>No case files assigned yet</h2><p>Ask a PocketBase administrator to create a case file and choose your instructor account in its <strong>teacher</strong> field.</p><a class="button secondary" href="/_/" target="_blank" rel="noreferrer">Open data dashboard</a></section>`;
 }
 
 function formatDate(value: string): string {
@@ -209,8 +209,8 @@ function renderLesson(lesson: Lesson, assets: { backgrounds: BackgroundAsset[]; 
   const objectMap = new Map(assets.objects.map(item => [item.id, item]));
   const placements = Array.isArray(lesson.objects) ? lesson.objects : [];
   app.innerHTML = `
-    ${preview ? `<div class="preview-bar"><span>Teacher preview${lesson.published ? " · Published" : " · Draft"}</span><a href="/dashboard" data-link>Return to library</a></div>` : ""}
-    <header class="student-header"><div class="wordmark light"><span>LR</span><strong>Lesson Room</strong></div><p>Shared by your teacher</p></header>
+    ${preview ? `<div class="preview-bar"><span>Instructor preview${lesson.published ? " · Published" : " · Draft"}</span><a href="/dashboard" data-link>Return to case files</a></div>` : ""}
+    <header class="student-header"><div class="wordmark light"><span>ER</span><strong>EVIDENCE ROOM</strong></div><p>Forensic training unit</p></header>
     <main class="student-main">
       <section class="lesson-heading"><p class="kicker">Interactive lesson</p><h1>${escapeHtml(lesson.name)}</h1><p>${escapeHtml(lesson.description)}</p></section>
       <section class="lesson-stage" style="aspect-ratio:${background.width}/${background.height}" aria-label="${escapeHtml(background.alt)}">
@@ -232,7 +232,7 @@ function placedObject(placement: Placement, objectMap: Map<string, ObjectAsset>,
 }
 
 function errorPage(title: string, detail: string, path: string, action: string): void {
-  app.innerHTML = `<main class="error-page"><a class="wordmark light" href="/" data-link><span>LR</span><strong>Lesson Room</strong></a><div><p class="error-code">404 / Lesson Room</p><h1>${escapeHtml(title)}</h1><p>${escapeHtml(detail)}</p><a class="button primary" href="${escapeHtml(path)}" data-link>${escapeHtml(action)} <span>→</span></a></div></main>`;
+  app.innerHTML = `<main class="error-page"><a class="wordmark light" href="/" data-link><span>ER</span><strong>EVIDENCE ROOM</strong></a><div><p class="error-code">404 / Evidence Room</p><h1>${escapeHtml(title)}</h1><p>${escapeHtml(detail)}</p><a class="button primary" href="${escapeHtml(path)}" data-link>${escapeHtml(action)} <span>→</span></a></div></main>`;
 }
 
 async function route(): Promise<void> {
@@ -280,8 +280,8 @@ document.addEventListener("click", async (event) => {
   if (copyButton?.dataset.token) {
     const url = `${window.location.origin}/lesson/${encodeURIComponent(copyButton.dataset.token)}`;
     await navigator.clipboard.writeText(url);
-    copyButton.textContent = "Link copied";
-    window.setTimeout(() => { copyButton.textContent = "Copy student link"; }, 1800);
+    copyButton.textContent = "Briefing copied";
+    window.setTimeout(() => { copyButton.textContent = "Copy briefing link"; }, 1800);
   }
 });
 
