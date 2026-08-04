@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Woodland trail</title>
+  <desc id="desc">A stylized woodland path after rain, with conifers, a fallen log, a puddle, and police tape strung between two trunks.</desc>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#8e9a95"/><stop offset="1" stop-color="#b9bfb2"/></linearGradient>
+    <linearGradient id="ground" x2="0" y2="1"><stop stop-color="#3c4f3d"/><stop offset="1" stop-color="#28362a"/></linearGradient>
+    <linearGradient id="trail" x2="0" y2="1"><stop stop-color="#8a7655"/><stop offset="1" stop-color="#5d4f38"/></linearGradient>
+    <g id="conifer">
+      <rect x="-16" y="40" width="32" height="120" fill="#3a2f26"/>
+      <path d="M0-210 90 40H-90Z" fill="#34492f"/>
+      <path d="M0-110 115 110H-115Z" fill="#2a3d27"/>
+    </g>
+  </defs>
+
+  <rect width="1600" height="340" fill="url(#sky)"/>
+  <rect y="320" width="1600" height="580" fill="url(#ground)"/>
+
+  <g stroke="#1d281c" stroke-width="9">
+    <use href="#conifer" transform="translate(130 330) scale(1.15)"/>
+    <use href="#conifer" transform="translate(330 320)"/>
+    <use href="#conifer" transform="translate(510 335) scale(.85)"/>
+    <use href="#conifer" transform="translate(1250 325) scale(1.05)"/>
+    <use href="#conifer" transform="translate(1450 335) scale(1.25)"/>
+  </g>
+
+  <path d="M60 900 1020 400 1140 415 620 900Z" fill="url(#trail)" stroke="#3f3626" stroke-width="14"/>
+  <g fill="#4c412d" opacity=".55">
+    <ellipse cx="430" cy="800" rx="70" ry="16"/>
+    <ellipse cx="760" cy="620" rx="52" ry="12"/>
+  </g>
+
+  <ellipse cx="640" cy="700" rx="120" ry="34" fill="#6d7c78" stroke="#43514c" stroke-width="10"/>
+
+  <g stroke="#2b2118" stroke-width="14">
+    <path d="M1080 760 1560 690" stroke-width="76" stroke-linecap="round" fill="none"/>
+    <path d="M1080 760 1560 690" stroke="#5b4a35" stroke-width="60" stroke-linecap="round" fill="none"/>
+    <circle cx="1090" cy="759" r="28" fill="#7a6444"/>
+  </g>
+
+  <g fill="#7f8a6a" opacity=".7">
+    <circle cx="230" cy="620" r="9"/><circle cx="300" cy="700" r="7"/><circle cx="180" cy="790" r="8"/>
+    <circle cx="1310" cy="520" r="8"/><circle cx="1400" cy="600" r="7"/><circle cx="900" cy="840" r="9"/>
+  </g>
+
+  <rect width="1600" height="900" fill="none" stroke="#202c25" stroke-width="30"/>
+</svg>

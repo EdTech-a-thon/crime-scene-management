@@ -125,9 +125,14 @@ p {
     background: #fff;
   }
 
+  /*
+   * Svelte scopes a component's own styles with an extra class, which outranks a
+   * plain selector here, so these overrides have to be marked important to win.
+   */
   .report-page {
-    padding: 0;
-    background: #fff;
+    padding: 0 !important;
+    background: #fff !important;
+    min-height: 0 !important;
   }
 
   .result-row,

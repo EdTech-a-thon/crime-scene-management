@@ -14,7 +14,11 @@
     "image": "background.svg",
     "alt": "An illustrated living room with a sofa, rug, coffee table, window, and doorway"
   },
-  "containers": ["plastic", "paper", "hard"],
+  "containers": [
+    "plastic",
+    "paper",
+    "hard"
+  ],
   "evidence": [
     {
       "id": "shirt",
@@ -28,8 +32,14 @@
       "correct": "paper",
       "success": "Breathable paper lets moisture escape while protecting the biological stain.",
       "failure": "Trapped moisture encouraged mold and bacterial growth, degrading DNA evidence.",
-      "conditionsIfCorrect": ["STABLE", "STABLE"],
-      "conditionsIfWrong": ["MOISTURE TRAPPED", "MOLD GROWTH"]
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "MOISTURE TRAPPED",
+        "MOLD GROWTH"
+      ]
     },
     {
       "id": "knife",
@@ -39,12 +49,18 @@
       "alt": "A kitchen knife",
       "description": "A sharp eight-inch kitchen knife near the edge of the rug.",
       "x": 38,
-      "y": 84,
+      "y": 78,
       "correct": "hard",
       "success": "The rigid container immobilizes the blade and protects evidence and handlers.",
       "failure": "The blade punctured its package, creating an injury risk and losing trace material.",
-      "conditionsIfCorrect": ["STABLE", "STABLE"],
-      "conditionsIfWrong": ["PACKAGE FAILURE", "TRACE LOST"]
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "PACKAGE FAILURE",
+        "TRACE LOST"
+      ]
     },
     {
       "id": "casing",
@@ -53,13 +69,19 @@
       "image": "objects/casing.svg",
       "alt": "A brass cartridge casing",
       "description": "A small brass casing found beside the coffee table.",
-      "x": 30,
-      "y": 74,
+      "x": 26,
+      "y": 72,
       "correct": "plastic",
       "success": "The dry casing remains contained and its markings stay protected.",
       "failure": "The selected package did not securely contain this small, dry item.",
-      "conditionsIfCorrect": ["STABLE", "STABLE"],
-      "conditionsIfWrong": ["AT RISK", "MARKINGS SCUFFED"]
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "AT RISK",
+        "MARKINGS SCUFFED"
+      ]
     },
     {
       "id": "hair",
@@ -73,8 +95,14 @@
       "correct": "plastic",
       "success": "The sealed bag keeps this tiny, dry trace sample from being lost.",
       "failure": "The strand was not securely contained and could be lost during transport.",
-      "conditionsIfCorrect": ["STABLE", "STABLE"],
-      "conditionsIfWrong": ["AT RISK", "SAMPLE LOST"]
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "AT RISK",
+        "SAMPLE LOST"
+      ]
     },
     {
       "id": "phone",
@@ -88,8 +116,14 @@
       "correct": "plastic",
       "success": "The phone remains isolated from loose debris during transport.",
       "failure": "The device was not packaged according to the collection protocol.",
-      "conditionsIfCorrect": ["STABLE", "STABLE"],
-      "conditionsIfWrong": ["AT RISK", "SURFACE CONTAMINATED"]
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "AT RISK",
+        "SURFACE CONTAMINATED"
+      ]
     },
     {
       "id": "fiber",
@@ -103,8 +137,14 @@
       "correct": "plastic",
       "success": "The small trace sample remains visible, dry, and contained.",
       "failure": "Loose trace evidence could escape or transfer during handling.",
-      "conditionsIfCorrect": ["STABLE", "STABLE"],
-      "conditionsIfWrong": ["AT RISK", "FIBER TRANSFERRED"]
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "AT RISK",
+        "FIBER TRANSFERRED"
+      ]
     },
     {
       "id": "shoe",
@@ -118,8 +158,14 @@
       "correct": "plastic",
       "success": "The dry shoe and its soil evidence remain together for transport.",
       "failure": "Soil flakes may be lost or transferred without secure containment.",
-      "conditionsIfCorrect": ["STABLE", "STABLE"],
-      "conditionsIfWrong": ["AT RISK", "SOIL SHED"]
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "AT RISK",
+        "SOIL SHED"
+      ]
     },
     {
       "id": "cup",
@@ -133,8 +179,14 @@
       "correct": "plastic",
       "success": "The cup remains isolated for controlled laboratory examination.",
       "failure": "Contact and trace evidence are more vulnerable in this packaging.",
-      "conditionsIfCorrect": ["STABLE", "STABLE"],
-      "conditionsIfWrong": ["AT RISK", "PRINTS SMUDGED"]
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "AT RISK",
+        "PRINTS SMUDGED"
+      ]
     }
   ]
 }
