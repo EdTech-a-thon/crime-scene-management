@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap");
+
+/*
+ * The shared look of the app: colours, fonts, buttons, and the print rules.
+ * Everything else lives in the <style> block of the component that draws it.
+ */
+
+:root {
+  --ink: #172019;
+  --forest: #111a15;
+  --forest-2: #1b2820;
+  --paper: #e9e4d7;
+  --paper-dark: #d7d0be;
+  --acid: #d1e23c;
+  --red: #a33b2d;
+  --green: #60875d;
+  --mono: "IBM Plex Mono", monospace;
+  --display: "Barlow Condensed", sans-serif;
+  --serif: "Source Serif 4", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--paper);
+  background: var(--forest);
+  font-family: var(--serif);
+}
+
+button {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+/* The small uppercase label that sits above most headings. */
+.eyebrow {
+  margin-bottom: 10px;
+  color: #79877c;
+  font: 600 10px var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Screens set focus to their heading when they open, without showing an outline. */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+.primary-button,
+.secondary-button {
+  min-height: 50px;
+  padding: 0 22px;
+  border: 0;
+  font: 700 12px var(--mono);
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.primary-button {
+  color: var(--forest);
+  background: var(--acid);
+  box-shadow: 4px 4px 0 #070b08;
+}
+
+.primary-button:hover {
+  background: #e3f34c;
+  transform: translateY(-2px);
+}
+
+.primary-button b {
+  margin-left: 20px;
+  font-size: 18px;
+}
+
+.primary-button:disabled {
+  filter: grayscale(1);
+  opacity: 0.36;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.secondary-button {
+  color: var(--paper);
+  background: transparent;
+  border: 1px solid #ffffff42;
+}
+
+.full {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/*
+ * Printing. Only the report is meant to be printed, so this strips the parts of
+ * the page a student cannot use on paper and puts the report on a white page.
+ */
+@media print {
+  .topbar,
+  .report-actions,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    color: #111;
+    background: #fff;
+  }
+
+  /*
+   * Svelte scopes a component's own styles with an extra class, which outranks a
+   * plain selector here, so these overrides have to be marked important to win.
+   */
+  .report-page {
+    padding: 0 !important;
+    background: #fff !important;
+    min-height: 0 !important;
+  }
+
+  .result-row,
+  .report-summary > div {
+    break-inside: avoid;
+  }
+
+  /* Keep the score seal and worksheet code from printing as empty boxes. */
+  .score-seal,
+  .case-code {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  @page {
+    margin: 14mm;
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "id": "abandoned-vehicle",
+  "caseNumber": "24-153",
+  "title": "THE ABANDONED VEHICLE",
+  "subtitle": "Training simulation 03",
+  "location": "Level 3, Eastgate car park\nBay 47",
+  "conditions": "Sheltered / 61°F\nVehicle unlocked",
+  "role": "Forensic evidence\ntechnician",
+  "time": "14:30 HOURS",
+  "summary": "A confined space with broken glass, upholstery fibres, and one item that no bag can hold safely. Read each description before you choose.",
+  "objective": "Collect every item. One of them gives off fumes, and this scene carries a container you have not used before.",
+  "worksheetPrefix": "VEH",
+  "background": {
+    "image": "background.svg",
+    "alt": "The inside of a car seen from the back seat, with two front seats, a steering wheel, a dashboard, a shattered side window, and a wet floor mat"
+  },
+  "containers": [
+    "plastic",
+    "paper",
+    "hard",
+    "metal"
+  ],
+  "evidence": [
+    {
+      "id": "rag",
+      "number": "01",
+      "name": "Fuel-soaked rag",
+      "image": "objects/rag.svg",
+      "alt": "A crumpled cloth with a dark wet patch and rising fumes",
+      "description": "A cloth in the passenger footwell, heavy with petrol. You can smell it from the doorway.",
+      "x": 62,
+      "y": 78,
+      "correct": "metal",
+      "success": "The airtight can holds the petrol vapour in, so the lab can still identify which fuel was used.",
+      "failure": "Petrol vapour passed straight through this packaging. Within days there was nothing left to identify.",
+      "conditionsIfCorrect": [
+        "VAPOUR HELD",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "VAPOUR ESCAPING",
+        "FUEL UNIDENTIFIABLE"
+      ]
+    },
+    {
+      "id": "glass",
+      "number": "02",
+      "name": "Glass fragment",
+      "image": "objects/glass.svg",
+      "alt": "An angular fragment of window glass",
+      "description": "A sharp fragment from the shattered side window, resting on the dashboard.",
+      "x": 14,
+      "y": 53,
+      "correct": "hard",
+      "success": "The rigid container holds the sharp edge still, protecting both the fracture pattern and the handler.",
+      "failure": "The fragment cut its way out, endangering whoever carried it and losing the fracture edge.",
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "PACKAGE TORN",
+        "EDGE SHATTERED"
+      ]
+    },
+    {
+      "id": "screwdriver",
+      "number": "03",
+      "name": "Screwdriver",
+      "image": "objects/screwdriver.svg",
+      "alt": "A screwdriver with a red handle",
+      "description": "A screwdriver pushed under the driver's seat. The tip is scratched and burred.",
+      "x": 28,
+      "y": 78,
+      "correct": "hard",
+      "success": "Held rigid, the tool cannot rub against anything, so its tip marks stay comparable.",
+      "failure": "The tip rubbed against its packaging and the tool marks that could match it to a break-in were worn away.",
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "TIP RUBBING",
+        "TOOL MARKS WORN"
+      ]
+    },
+    {
+      "id": "fibre",
+      "number": "04",
+      "name": "Upholstery fibre",
+      "image": "objects/fibre.svg",
+      "alt": "A short curled red fibre",
+      "description": "A single red fibre on the passenger seat, a different colour to this car's upholstery.",
+      "x": 88,
+      "y": 75,
+      "correct": "plastic",
+      "success": "Sealed and visible, the fibre stays where it was put and can still be matched to a source.",
+      "failure": "The fibre worked its way out of the packaging and can no longer be tied to this vehicle.",
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "AT RISK",
+        "FIBRE LOST"
+      ]
+    },
+    {
+      "id": "wallet",
+      "number": "05",
+      "name": "Wallet",
+      "image": "objects/wallet.svg",
+      "alt": "A brown leather wallet",
+      "description": "A dry wallet in the footwell behind the driver's seat, cards still inside.",
+      "x": 44,
+      "y": 70,
+      "correct": "plastic",
+      "success": "The wallet and everything inside it stay together and sealed away from the rest of the scene.",
+      "failure": "The wallet was not sealed, so its contents and any prints on them were exposed in transit.",
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "AT RISK",
+        "CONTENTS DISTURBED"
+      ]
+    },
+    {
+      "id": "simcard",
+      "number": "06",
+      "name": "SIM card",
+      "image": "objects/simcard.svg",
+      "alt": "A gold SIM card",
+      "description": "A dry SIM card tucked into the driver's door pocket.",
+      "x": 7,
+      "y": 66,
+      "correct": "plastic",
+      "success": "The sealed bag stops this very small item from disappearing into a corner of the box.",
+      "failure": "Something this small slipped out of its packaging and never reached the laboratory.",
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "AT RISK",
+        "ITEM MISSING"
+      ]
+    },
+    {
+      "id": "bloodswab",
+      "number": "07",
+      "name": "Blood swab",
+      "image": "objects/bloodswab.svg",
+      "alt": "A cotton swab with a red-stained tip",
+      "description": "A swab taken from a smear on the driver's seat. The tip is still wet.",
+      "x": 11,
+      "y": 77,
+      "correct": "paper",
+      "success": "The wet swab dries in the breathable packaging, keeping the blood sample fit for DNA analysis.",
+      "failure": "Sealed while wet, the swab grew bacteria and the DNA in the sample broke down.",
+      "conditionsIfCorrect": [
+        "DRYING",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "MOISTURE TRAPPED",
+        "DNA DEGRADED"
+      ]
+    },
+    {
+      "id": "drinkcan",
+      "number": "08",
+      "name": "Drink can",
+      "image": "objects/drinkcan.svg",
+      "alt": "An aluminium drink can",
+      "description": "A half-full can in the cup holder. The rim is damp and may carry saliva.",
+      "x": 57,
+      "y": 62,
+      "correct": "paper",
+      "success": "The damp rim dries out instead of stewing, so the saliva on it is still worth testing.",
+      "failure": "The liquid left inside kept the rim wet and the saliva sample spoiled before it was tested.",
+      "conditionsIfCorrect": [
+        "DRYING",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "MOISTURE TRAPPED",
+        "SAMPLE SPOILED"
+      ]
+    }
+  ]
+}

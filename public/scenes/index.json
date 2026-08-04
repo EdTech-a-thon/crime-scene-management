@@ -1,0 +1,26 @@
+[
+  {
+    "id": "riverside-apartment",
+    "title": "The Riverside Apartment",
+    "subtitle": "Training simulation 01",
+    "location": "218 Riverside Ave. — Living room",
+    "caseNumber": "24-071",
+    "blurb": "An indoor scene, secured overnight. Wet and dry evidence side by side."
+  },
+  {
+    "id": "woodland-trail",
+    "title": "The Woodland Trail",
+    "subtitle": "Training simulation 02",
+    "location": "Kingsmere Woods — North path",
+    "caseNumber": "24-118",
+    "blurb": "Outdoors after rain. Damp evidence and a footwear impression in soft mud."
+  },
+  {
+    "id": "abandoned-vehicle",
+    "title": "The Abandoned Vehicle",
+    "subtitle": "Training simulation 03",
+    "location": "Level 3, Eastgate car park",
+    "caseNumber": "24-153",
+    "blurb": "A confined space with broken glass, fibres, and a container you have not used yet."
+  }
+]

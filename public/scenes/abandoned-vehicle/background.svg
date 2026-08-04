@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Abandoned vehicle interior</title>
+  <desc id="desc">A stylized view inside a car from the back seat, with two front seats, a steering wheel, a dashboard, a shattered side window, and a wet floor mat.</desc>
+  <defs>
+    <linearGradient id="roof" x2="0" y2="1"><stop stop-color="#3d4842"/><stop offset="1" stop-color="#28312c"/></linearGradient>
+    <linearGradient id="seat" x2="0" y2="1"><stop stop-color="#6e675d"/><stop offset="1" stop-color="#4d4740"/></linearGradient>
+    <linearGradient id="daylight" x2="0" y2="1"><stop stop-color="#9fb0a6"/><stop offset="1" stop-color="#6d7d74"/></linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#roof)"/>
+
+  <rect x="150" y="150" width="1300" height="330" rx="18" fill="#303a35" stroke="#131a16" stroke-width="20"/>
+  <rect x="470" y="185" width="660" height="250" rx="10" fill="url(#daylight)"/>
+  <rect x="200" y="185" width="230" height="250" rx="10" fill="url(#daylight)"/>
+
+  <g stroke="#cdd6cf" stroke-width="7" fill="none" opacity=".95">
+    <path d="M310 300 200 210M310 300 430 200M310 300 215 420M310 300 425 415M310 300 200 310M310 300 428 305"/>
+    <path d="M250 250 375 250 400 355 235 360Z"/>
+  </g>
+
+  <rect y="470" width="1600" height="200" fill="#454f49" stroke="#171d1a" stroke-width="16"/>
+  <rect x="520" y="500" width="560" height="120" rx="12" fill="#586460" stroke="#1b2320" stroke-width="14"/>
+  <circle cx="640" cy="560" r="26" fill="#2b3430"/>
+  <circle cx="800" cy="560" r="26" fill="#2b3430"/>
+
+  <g transform="translate(360 640)">
+    <ellipse rx="120" ry="26" fill="#1b211e"/>
+    <circle r="105" fill="none" stroke="#414b46" stroke-width="42"/>
+    <circle r="105" fill="none" stroke="#171d1a" stroke-width="12"/>
+    <path d="M-105 0h210M0-105v70" stroke="#414b46" stroke-width="26"/>
+    <circle r="34" fill="#4d574f" stroke="#171d1a" stroke-width="10"/>
+  </g>
+
+  <path d="M60 900V690q0-70 80-70h300q80 0 80 70v210z" fill="url(#seat)" stroke="#202622" stroke-width="20"/>
+  <path d="M1080 900V690q0-70 80-70h300q80 0 80 70v210z" fill="url(#seat)" stroke="#202622" stroke-width="20"/>
+  <g stroke="#2b2f2b" stroke-width="10" fill="none">
+    <path d="M290 640v260M1290 640v260"/>
+  </g>
+
+  <rect x="560" y="720" width="480" height="180" rx="14" fill="#333c37" stroke="#141a17" stroke-width="16"/>
+  <g stroke="#4b554e" stroke-width="12">
+    <path d="M600 760v100M660 760v100M720 760v100M780 760v100M840 760v100M900 760v100M960 760v100"/>
+  </g>
+  <ellipse cx="800" cy="830" rx="90" ry="34" fill="#4d5a54" opacity=".55"/>
+
+  <rect width="1600" height="900" fill="none" stroke="#202c25" stroke-width="30"/>
+</svg>

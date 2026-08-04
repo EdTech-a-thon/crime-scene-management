@@ -1,0 +1,192 @@
+{
+  "id": "woodland-trail",
+  "caseNumber": "24-118",
+  "title": "THE WOODLAND TRAIL",
+  "subtitle": "Training simulation 02",
+  "location": "Kingsmere Woods\nNorth path, marker 4",
+  "conditions": "Outdoor / 48°F\nRain stopped 06:10",
+  "role": "Forensic evidence\ntechnician",
+  "time": "09:15 HOURS",
+  "summary": "Rain fell overnight and stopped an hour ago. Several items are wet, and wet evidence spoils quickly in the wrong packaging.",
+  "objective": "Collect every item. Ask yourself whether each one is wet or dry before you choose a container.",
+  "worksheetPrefix": "WDL",
+  "background": {
+    "image": "background.svg",
+    "alt": "A woodland path after rain, with conifers, a fallen log, and a puddle"
+  },
+  "containers": [
+    "plastic",
+    "paper",
+    "hard"
+  ],
+  "evidence": [
+    {
+      "id": "footprint",
+      "number": "01",
+      "name": "Shoe impression cast",
+      "image": "objects/footprint.svg",
+      "alt": "A plaster cast of a shoe sole with tread ridges",
+      "description": "A plaster cast lifted from a deep shoe impression in the soft mud of the trail.",
+      "x": 31,
+      "y": 75,
+      "correct": "hard",
+      "success": "The rigid box supports the cast so its tread detail cannot snap or crumble.",
+      "failure": "Unsupported, the cast cracked in transit and the tread pattern can no longer be compared.",
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "EDGES CHIPPED",
+        "CAST BROKEN"
+      ]
+    },
+    {
+      "id": "cloth",
+      "number": "02",
+      "name": "Torn cloth scrap",
+      "image": "objects/cloth.svg",
+      "alt": "A torn scrap of blue cloth with water droplets",
+      "description": "A rain-soaked scrap of blue cloth snagged on a low branch beside the path.",
+      "x": 78,
+      "y": 52,
+      "correct": "paper",
+      "success": "Paper lets the soaked cloth dry out slowly instead of stewing in its own moisture.",
+      "failure": "Sealed while wet, the cloth stayed damp and mildew spread across the fibres.",
+      "conditionsIfCorrect": [
+        "DRYING",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "STILL SATURATED",
+        "MILDEW SPREAD"
+      ]
+    },
+    {
+      "id": "bottle",
+      "number": "03",
+      "name": "Glass bottle",
+      "image": "objects/bottle.svg",
+      "alt": "A green glass bottle",
+      "description": "A dry glass bottle lying against the fallen log, possibly handled without gloves.",
+      "x": 87,
+      "y": 73,
+      "correct": "hard",
+      "success": "The rigid container stops the glass knocking about, so the bottle and its fingerprints survive.",
+      "failure": "The bottle cracked against something hard in transit, taking the fingerprint ridges with it.",
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "SURFACE SCUFFED",
+        "GLASS CRACKED"
+      ]
+    },
+    {
+      "id": "cigarette",
+      "number": "04",
+      "name": "Cigarette butt",
+      "image": "objects/cigarette.svg",
+      "alt": "A cigarette butt with a tan filter",
+      "description": "A damp cigarette butt at the edge of the puddle. The filter may carry saliva.",
+      "x": 50,
+      "y": 67,
+      "correct": "paper",
+      "success": "The damp filter dries safely, so the saliva sample stays usable for DNA work.",
+      "failure": "Moisture sealed in with the filter let bacteria multiply and break the DNA down.",
+      "conditionsIfCorrect": [
+        "DRYING",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "MOISTURE TRAPPED",
+        "DNA DEGRADED"
+      ]
+    },
+    {
+      "id": "glove",
+      "number": "05",
+      "name": "Leather glove",
+      "image": "objects/glove.svg",
+      "alt": "A brown leather glove",
+      "description": "A soaked leather glove dropped in the undergrowth, well off the path.",
+      "x": 16,
+      "y": 74,
+      "correct": "paper",
+      "success": "Breathable paper draws the water out of the leather without cooking the evidence inside it.",
+      "failure": "The wet leather sweated inside its seal and rotted, along with any skin cells in the lining.",
+      "conditionsIfCorrect": [
+        "DRYING",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "MOISTURE TRAPPED",
+        "LEATHER ROTTED"
+      ]
+    },
+    {
+      "id": "keys",
+      "number": "06",
+      "name": "Set of keys",
+      "image": "objects/keys.svg",
+      "alt": "Two keys on a split ring",
+      "description": "A dry set of keys half buried in leaf litter at the foot of a tree.",
+      "x": 24,
+      "y": 64,
+      "correct": "plastic",
+      "success": "The sealed bag keeps the keys and the leaf debris clinging to them together and dry.",
+      "failure": "The keys were not sealed in, so loose debris and any trace on it went missing.",
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "AT RISK",
+        "TRACE LOST"
+      ]
+    },
+    {
+      "id": "receipt",
+      "number": "07",
+      "name": "Crumpled receipt",
+      "image": "objects/receipt.svg",
+      "alt": "A crumpled paper receipt",
+      "description": "A dry crumpled receipt caught under a stone. The print is still readable.",
+      "x": 59,
+      "y": 52,
+      "correct": "plastic",
+      "success": "Sealed away from the weather, the ink stays readable and the paper keeps its shape.",
+      "failure": "Left open to the damp air, the paper softened and the printed detail blurred.",
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "EDGES DAMP",
+        "INK BLURRED"
+      ]
+    },
+    {
+      "id": "hairclip",
+      "number": "08",
+      "name": "Hair clip",
+      "image": "objects/hairclip.svg",
+      "alt": "A pink plastic hair clip",
+      "description": "A dry plastic hair clip in the undergrowth, with several hairs still caught in it.",
+      "x": 66,
+      "y": 66,
+      "correct": "plastic",
+      "success": "The seal holds the clip and the hairs caught in it in one place.",
+      "failure": "The hairs worked loose from the clip and were lost before the item reached the lab.",
+      "conditionsIfCorrect": [
+        "STABLE",
+        "STABLE"
+      ],
+      "conditionsIfWrong": [
+        "AT RISK",
+        "HAIRS LOST"
+      ]
+    }
+  ]
+}
