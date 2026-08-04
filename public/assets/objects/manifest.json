@@ -1,0 +1,12 @@
+{
+  "objects": [
+    { "id": "shirt", "name": "Bloodstained shirt", "image": "/assets/objects/shirt/object.svg", "alt": "A white shirt with a dark red stain" },
+    { "id": "knife", "name": "Kitchen knife", "image": "/assets/objects/knife/object.svg", "alt": "A kitchen knife" },
+    { "id": "casing", "name": "Cartridge casing", "image": "/assets/objects/casing/object.svg", "alt": "A brass cartridge casing" },
+    { "id": "hair", "name": "Hair strand", "image": "/assets/objects/hair/object.svg", "alt": "A dark curved hair strand" },
+    { "id": "phone", "name": "Mobile phone", "image": "/assets/objects/phone/object.svg", "alt": "A black mobile phone" },
+    { "id": "fiber", "name": "Blue fiber", "image": "/assets/objects/fiber/object.svg", "alt": "A short blue fiber" },
+    { "id": "shoe", "name": "Muddy shoe", "image": "/assets/objects/shoe/object.svg", "alt": "A mud-covered shoe" },
+    { "id": "cup", "name": "Drinking cup", "image": "/assets/objects/cup/object.svg", "alt": "A striped drinking cup" }
+  ]
+}
