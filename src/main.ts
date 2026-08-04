@@ -35,6 +35,8 @@ interface ObjectAsset {
   alt: string;
 }
 
+const evidenceCategories = ["Biological", "Physical", "Digital", "Trace"];
+
 const pb = new PocketBase(window.location.origin);
 const app = document.querySelector<HTMLDivElement>("#app")!;
 
@@ -217,8 +219,10 @@ function renderLesson(lesson: Lesson, assets: { backgrounds: BackgroundAsset[]; 
         <img class="background-image" src="${escapeHtml(background.image)}" alt="${escapeHtml(background.alt)}">
         ${placements.map((placement, index) => placedObject(placement, objectMap, index)).join("")}
       </section>
-      <p class="stage-note"><span>Explore</span> Select an object to see its name.</p>
+      ${preview ? `<p class="stage-note"><span>Preview</span> Students can select and categorize every object below.</p>` : evidenceBoard(placements, objectMap)}
     </main>`;
+
+  if (!preview) enableEvidenceSorting(placements, objectMap);
 }
 
 function placedObject(placement: Placement, objectMap: Map<string, ObjectAsset>, index: number): string {
@@ -228,7 +232,57 @@ function placedObject(placement: Placement, objectMap: Map<string, ObjectAsset>,
   const y = Math.max(0, Math.min(100, placement.y));
   const scale = Math.max(0.4, Math.min(2.5, Number(placement.scale) || 1));
   const rotation = Math.max(-180, Math.min(180, Number(placement.rotation) || 0));
-  return `<button class="placed-object" style="--x:${x}%;--y:${y}%;--scale:${scale};--rotation:${rotation}deg" aria-label="${escapeHtml(asset.name)}" data-object-label="${escapeHtml(asset.name)}"><img src="${escapeHtml(asset.image)}" alt="${escapeHtml(asset.alt)}"><span><b>${String(index + 1).padStart(2, "0")}</b>${escapeHtml(asset.name)}</span></button>`;
+  return `<button class="placed-object" type="button" style="--x:${x}%;--y:${y}%;--scale:${scale};--rotation:${rotation}deg" aria-label="Select ${escapeHtml(asset.name)}" data-object-id="${escapeHtml(asset.id)}"><img src="${escapeHtml(asset.image)}" alt="${escapeHtml(asset.alt)}"><span><b>${String(index + 1).padStart(2, "0")}</b>${escapeHtml(asset.name)}</span></button>`;
+}
+
+function evidenceBoard(placements: Placement[], objectMap: Map<string, ObjectAsset>): string {
+  const objects = placements.map(placement => objectMap.get(placement.objectId)).filter((asset): asset is ObjectAsset => Boolean(asset));
+  return `<section class="evidence-board" aria-labelledby="evidence-heading">
+    <div class="evidence-board-heading"><div><p class="kicker">Evidence log</p><h2 id="evidence-heading">Classify the evidence</h2><p>Select an item in the scene, then assign it to the category that best fits.</p></div><strong><span id="sorted-count">0</span> / ${objects.length} sorted</strong></div>
+    <div class="selected-evidence" id="selected-evidence" aria-live="polite"><span>01</span><p>Select an object in the scene to begin.</p></div>
+    <div class="category-actions" aria-label="Evidence categories">${evidenceCategories.map(category => `<button type="button" class="category-button" data-category="${category}" disabled>${category}</button>`).join("")}</div>
+    <ul class="evidence-log" id="evidence-log">${objects.map((asset, index) => `<li data-evidence-entry="${escapeHtml(asset.id)}"><span>${String(index + 1).padStart(2, "0")}</span><strong>${escapeHtml(asset.name)}</strong><em>Not sorted</em></li>`).join("")}</ul>
+  </section>`;
+}
+
+function enableEvidenceSorting(placements: Placement[], objectMap: Map<string, ObjectAsset>): void {
+  const availableIds = new Set(placements.map(placement => placement.objectId));
+  const selected = app.querySelector<HTMLDivElement>("#selected-evidence")!;
+  const count = app.querySelector<HTMLSpanElement>("#sorted-count")!;
+  const categoryButtons = Array.from(app.querySelectorAll<HTMLButtonElement>("[data-category]"));
+  let selectedId = "";
+  let classifications = new Map<string, string>();
+
+  function selectObject(id: string): void {
+    if (!availableIds.has(id)) return;
+    selectedId = id;
+    const asset = objectMap.get(id)!;
+    selected.innerHTML = `<span>Selected</span><p><strong>${escapeHtml(asset.name)}</strong><br>Choose its evidence category below.</p>`;
+    app.querySelectorAll<HTMLButtonElement>(".placed-object").forEach(button => {
+      const isSelected = button.dataset.objectId === id;
+      button.classList.toggle("selected", isSelected);
+      button.setAttribute("aria-pressed", String(isSelected));
+    });
+    categoryButtons.forEach(button => { button.disabled = false; });
+  }
+
+  app.querySelectorAll<HTMLButtonElement>(".placed-object").forEach(button => {
+    button.addEventListener("click", () => selectObject(button.dataset.objectId ?? ""));
+  });
+
+  categoryButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      if (!selectedId) return;
+      const category = button.dataset.category!;
+      classifications.set(selectedId, category);
+      const entry = app.querySelector<HTMLElement>(`[data-evidence-entry="${selectedId}"]`)!;
+      entry.classList.add("sorted");
+      entry.querySelector("em")!.textContent = category;
+      count.textContent = String(classifications.size);
+      selected.innerHTML = `<span>Logged</span><p><strong>${escapeHtml(objectMap.get(selectedId)!.name)}</strong><br>Classified as ${escapeHtml(category)} evidence.</p>`;
+      categoryButtons.forEach(categoryButton => { categoryButton.disabled = true; });
+    });
+  });
 }
 
 function errorPage(title: string, detail: string, path: string, action: string): void {
