@@ -1,0 +1,22 @@
+{
+  "plastic": {
+    "label": "Plastic evidence bag",
+    "icon": "▱",
+    "detail": "Sealed, clear polyethylene"
+  },
+  "paper": {
+    "label": "Paper evidence bag",
+    "icon": "▰",
+    "detail": "Breathable kraft paper"
+  },
+  "hard": {
+    "label": "Hard-sided container",
+    "icon": "▣",
+    "detail": "Rigid, puncture resistant"
+  },
+  "metal": {
+    "label": "Clean metal can",
+    "icon": "◍",
+    "detail": "Airtight, for fuels and fumes"
+  }
+}

@@ -1,11 +1,11 @@
+import { svelte } from "@sveltejs/vite-plugin-svelte";
 import { defineConfig } from "vite";
 
+const allowedHosts = [".exe.xyz", ".edtechathon.com"];
+
 export default defineConfig({
-  server: {
-    allowedHosts: [".exe.xyz", ".edtechathon.com"],
-    proxy: {
-      "/api": "http://127.0.0.1:8090",
-      "/_/": "http://127.0.0.1:8090",
-    },
-  },
+  plugins: [svelte()],
+  build: { outDir: "dist", emptyOutDir: true },
+  server: { host: "0.0.0.0", port: 8000, allowedHosts },
+  preview: { host: "0.0.0.0", port: 8000, allowedHosts },
 });
