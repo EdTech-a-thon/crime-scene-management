@@ -71,9 +71,9 @@
       "description": "A small brass casing found beside the coffee table.",
       "x": 26,
       "y": 72,
-      "correct": "plastic",
-      "success": "The dry casing remains contained and its markings stay protected.",
-      "failure": "The selected package did not securely contain this small, dry item.",
+      "correct": "hard",
+      "success": "The hard-sided container keeps the casing secure and protects its markings.",
+      "failure": "The selected package did not adequately protect the casing and its markings.",
       "conditionsIfCorrect": [
         "STABLE",
         "STABLE"

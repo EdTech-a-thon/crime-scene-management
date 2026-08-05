@@ -82,12 +82,9 @@
           <p>You chose: <strong>{containers[choice].label}</strong></p>
         </div>
         <div class="result-outcome">
-          <span>{right ? "✓ PRESERVED" : "! COMPROMISED"}</span>
-          <p>{right ? item.success : item.failure}</p>
-          {#if !right}
-            <small>Correct choice: {containers[item.correct].label}</small>
-          {/if}
-        </div>
+           <span>{right ? "✓ PRESERVED" : "! COMPROMISED"}</span>
+           <p>{right ? item.success : item.failure}</p>
+         </div>
       </article>
     {/each}
   </section>
@@ -326,13 +323,6 @@
     margin: 4px 0 0;
     color: #505950;
     font-size: 11px;
-  }
-
-  .result-outcome small {
-    display: block;
-    margin-top: 5px;
-    color: #893a30;
-    font: 600 8px var(--mono);
   }
 
   .report-actions {
