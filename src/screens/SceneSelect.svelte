@@ -41,7 +41,6 @@
 
 <style>
   .select-page {
-    min-height: calc(100vh - 76px);
     padding: clamp(30px, 5vw, 70px) clamp(20px, 5vw, 70px) 70px;
     background:
       radial-gradient(circle at 20% 10%, #314136 0, transparent 34%),

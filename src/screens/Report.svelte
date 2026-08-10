@@ -98,7 +98,6 @@
 
 <style>
   .report-page {
-    min-height: calc(100vh - 76px);
     padding: 45px clamp(22px, 6vw, 80px) 65px;
     color: var(--ink);
     background: #ded8c9;

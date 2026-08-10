@@ -91,7 +91,6 @@
 
 <style>
   .scene-layout {
-    min-height: calc(100vh - 76px);
     display: grid;
     grid-template-columns: minmax(0, 1fr) 330px;
   }

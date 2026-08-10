@@ -1,11 +1,15 @@
 <script lang="ts">
+  import Link from "./Link.svelte";
+
   interface Props {
     /** The case number stamped on the right, when a scene is open. */
     caseNumber?: string;
+    /** Shown instead of the case stamp on the About and Privacy pages. */
+    backLink?: boolean;
     onhome: () => void;
   }
 
-  let { caseNumber, onhome }: Props = $props();
+  let { caseNumber, backLink = false, onhome }: Props = $props();
 </script>
 
 <header class="topbar">
@@ -17,7 +21,9 @@
     </span>
   </button>
 
-  {#if caseNumber}
+  {#if backLink}
+    <Link href="/" class="back-link">← BACK TO THE CASE FILES</Link>
+  {:else if caseNumber}
     <div class="case-stamp">
       <span>ACTIVE CASE</span>
       <strong>{caseNumber}</strong>
@@ -95,6 +101,18 @@
     color: var(--acid);
     font-size: 16px;
     letter-spacing: 0.08em;
+  }
+
+  .topbar :global(.back-link) {
+    color: #9da89f;
+    font: 600 10px var(--mono);
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .topbar :global(.back-link:hover) {
+    color: var(--acid);
   }
 
   @media (max-width: 600px) {
