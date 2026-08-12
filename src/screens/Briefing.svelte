@@ -61,7 +61,6 @@
 
 <style>
   .briefing-page {
-    min-height: calc(100vh - 76px);
     display: grid;
     place-items: center;
     padding: clamp(25px, 5vw, 75px);

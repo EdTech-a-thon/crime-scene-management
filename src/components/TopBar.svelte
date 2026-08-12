@@ -1,23 +1,30 @@
 <script lang="ts">
+  import Link from "./Link.svelte";
+  import Logo from "./Logo.svelte";
+
   interface Props {
     /** The case number stamped on the right, when a scene is open. */
     caseNumber?: string;
+    /** Shown instead of the case stamp on the About and Privacy pages. */
+    backLink?: boolean;
     onhome: () => void;
   }
 
-  let { caseNumber, onhome }: Props = $props();
+  let { caseNumber, backLink = false, onhome }: Props = $props();
 </script>
 
 <header class="topbar">
   <button class="brand" onclick={onhome} aria-label="Return to the crime scene list">
-    <span class="brand-mark">ER</span>
+    <span class="brand-mark"><Logo size={52} /></span>
     <span>
       <strong>EVIDENCE ROOM</strong>
       <small>FORENSIC TRAINING UNIT</small>
     </span>
   </button>
 
-  {#if caseNumber}
+  {#if backLink}
+    <Link href="/" class="back-link">← BACK TO THE CASE FILES</Link>
+  {:else if caseNumber}
     <div class="case-stamp">
       <span>ACTIVE CASE</span>
       <strong>{caseNumber}</strong>
@@ -50,14 +57,8 @@
   }
 
   .brand-mark {
-    width: 39px;
-    height: 39px;
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--acid);
+    display: block;
     color: var(--acid);
-    font: 700 18px var(--display);
-    transform: rotate(-2deg);
   }
 
   .brand strong,
@@ -97,6 +98,18 @@
     letter-spacing: 0.08em;
   }
 
+  .topbar :global(.back-link) {
+    color: #9da89f;
+    font: 600 10px var(--mono);
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .topbar :global(.back-link:hover) {
+    color: var(--acid);
+  }
+
   @media (max-width: 600px) {
     .topbar {
       height: 64px;
@@ -113,6 +126,11 @@
 
     .brand strong {
       font-size: 11px;
+    }
+
+    .brand-mark :global(svg) {
+      width: 44px;
+      height: 44px;
     }
   }
 </style>

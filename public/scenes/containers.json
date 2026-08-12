@@ -2,7 +2,7 @@
   "plastic": {
     "label": "Plastic evidence bag",
     "icon": "▱",
-    "detail": "Sealed, clear polyethylene"
+    "detail": "Sealed, clear polyethylene. Evidence wrapped in paper bindle before being placed in bag, if necessary."
   },
   "paper": {
     "label": "Paper evidence bag",

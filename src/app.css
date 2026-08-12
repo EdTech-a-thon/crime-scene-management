@@ -135,6 +135,12 @@ p {
     min-height: 0 !important;
   }
 
+  /* Without this the shell still reserves a full window of height on paper. */
+  .app-shell {
+    display: block !important;
+    min-height: 0 !important;
+  }
+
   .result-row,
   .report-summary > div {
     break-inside: avoid;

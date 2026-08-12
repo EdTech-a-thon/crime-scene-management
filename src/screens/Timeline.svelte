@@ -100,7 +100,6 @@
 
 <style>
   .time-page {
-    min-height: calc(100vh - 76px);
     padding: 45px clamp(22px, 6vw, 80px) 65px;
     background: radial-gradient(circle at 80% 10%, #2d3c31, transparent 30%), var(--forest);
   }
