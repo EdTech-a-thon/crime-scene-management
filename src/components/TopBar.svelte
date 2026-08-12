@@ -1,5 +1,6 @@
 <script lang="ts">
   import Link from "./Link.svelte";
+  import Logo from "./Logo.svelte";
 
   interface Props {
     /** The case number stamped on the right, when a scene is open. */
@@ -14,7 +15,7 @@
 
 <header class="topbar">
   <button class="brand" onclick={onhome} aria-label="Return to the crime scene list">
-    <span class="brand-mark">ER</span>
+    <span class="brand-mark"><Logo size={52} /></span>
     <span>
       <strong>EVIDENCE ROOM</strong>
       <small>FORENSIC TRAINING UNIT</small>
@@ -56,14 +57,8 @@
   }
 
   .brand-mark {
-    width: 39px;
-    height: 39px;
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--acid);
+    display: block;
     color: var(--acid);
-    font: 700 18px var(--display);
-    transform: rotate(-2deg);
   }
 
   .brand strong,
@@ -131,6 +126,11 @@
 
     .brand strong {
       font-size: 11px;
+    }
+
+    .brand-mark :global(svg) {
+      width: 44px;
+      height: 44px;
     }
   }
 </style>
